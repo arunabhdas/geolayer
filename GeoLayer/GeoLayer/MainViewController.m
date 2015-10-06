@@ -156,11 +156,9 @@
 {
     static NSString *CellIdentifier = @"Cell";
    
-    UILabel *mainLabel, *secondLabel;
     
     ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath] ;
     
-    UIImageView *photo;
     
     if (cell == nil)
     {
