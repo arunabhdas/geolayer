@@ -20,19 +20,30 @@
         // UIGraphicsEndImageContext();
         
         
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, 200, 30)];
+        // self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, 200, 30)];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(
+                                                                    30,
+                                                                    10,
+                                                                    100,
+                                                                    30
+                                                                    )];
+        
         self.titleLabel.textColor = [UIColor blackColor];
         self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Neue" size:24.0f];
-
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = YES;
 
         
         // self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(275, 10, 100, 30)];
-        // self.descriptionLabel.textColor = [UIColor blackColor];
-        // self.descriptionLabel.font = [UIFont fontWithName:@"Helvetica-Neue" size:24.0f];
-
+        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bounds.size.width-60,
+                                                                          0,
+                                                                          100,
+                                                                          30)];
+        self.descriptionLabel.textColor = [UIColor blackColor];
+        self.descriptionLabel.font = [UIFont fontWithName:@"Helvetica-Neue" size:24.0f];
+        self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = YES;
         // [self addSubview:self.iconImageView];
         [self addSubview:self.titleLabel];
-        // [self addSubview:self.descriptionLabel];
+        [self addSubview:self.descriptionLabel];
         
         
         

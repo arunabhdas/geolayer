@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-GeoLayer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -25,6 +30,11 @@
 			<false/>
 		</dict>
 		<key>RestKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,27 +52,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0E97F958391B04F866CF89144612BE01</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>158117D77AED03B83733E51D2D22983B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1D9BE79A71F7B265FDC6A9833B39CB48</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>485BE99E1A58E9506C457481E9065691</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4B0B030E58848A459F3E3B5D0558324B</key>
+		<key>5352D432641F0656C90741034E32F31E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +67,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>7734CD2D04F4A860316B0CA5872CEC19</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>85E4F669D160DE48E35DAB03776FD9DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A2770197345BCE1622568AECE6B8E824</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C10AECCA3CF7FCEBF4B9CEF1FBBAB132</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0B2ED709233592CD406177CA26B9E7D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F213400F021A3DBAD1561E22563B5625</key>
 		<dict>
 			<key>primary</key>
 			<true/>

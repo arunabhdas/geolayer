@@ -104,8 +104,7 @@
 		DCCC7DEB1BC3865D000BD540 /* GeoLayer */ = {
 			isa = PBXGroup;
 			children = (
-				DCCC7E0F1BC38C2D000BD540 /* Venue.h */,
-				DCCC7E101BC38C2D000BD540 /* Venue.m */,
+				DCCC7E211BC44F42000BD540 /* Model */,
 				DCCC7DEF1BC3865D000BD540 /* AppDelegate.h */,
 				DCCC7DF01BC3865D000BD540 /* AppDelegate.m */,
 				DCCC7E191BC3968B000BD540 /* Views */,
@@ -148,6 +147,15 @@
 				DCCC7E171BC39681000BD540 /* ItemCell.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		DCCC7E211BC44F42000BD540 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7E0F1BC38C2D000BD540 /* Venue.h */,
+				DCCC7E101BC38C2D000BD540 /* Venue.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

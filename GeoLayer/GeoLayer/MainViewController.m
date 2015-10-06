@@ -145,7 +145,8 @@
     
     if (itemCell == nil)
     {
-        itemCell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        itemCell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        itemCell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
     Venue *venue = self.venues[indexPath.row];
