@@ -15,8 +15,10 @@
 		DCCC7DFA1BC3865D000BD540 /* GeoLayer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF81BC3865D000BD540 /* GeoLayer.xcdatamodeld */; };
 		DCCC7DFC1BC3865D000BD540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCCC7DFB1BC3865D000BD540 /* Assets.xcassets */; };
 		DCCC7DFF1BC3865D000BD540 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCCC7DFD1BC3865D000BD540 /* LaunchScreen.storyboard */; };
-		DCCC7E081BC3868F000BD540 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E071BC3868F000BD540 /* Test.m */; settings = {ASSET_TAGS = (); }; };
 		DCCC7E111BC38C2D000BD540 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E101BC38C2D000BD540 /* Venue.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7E141BC38F7D000BD540 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E131BC38F7D000BD540 /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7E181BC39681000BD540 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E171BC39681000BD540 /* ItemCell.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7E1C1BC39A52000BD540 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E1B1BC39A52000BD540 /* DetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +35,14 @@
 		DCCC7DFB1BC3865D000BD540 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCCC7DFE1BC3865D000BD540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCCC7E001BC3865D000BD540 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DCCC7E061BC3868F000BD540 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
-		DCCC7E071BC3868F000BD540 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		DCCC7E0F1BC38C2D000BD540 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Venue.h; path = ../Venue.h; sourceTree = "<group>"; };
 		DCCC7E101BC38C2D000BD540 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Venue.m; path = ../Venue.m; sourceTree = "<group>"; };
+		DCCC7E121BC38F7D000BD540 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		DCCC7E131BC38F7D000BD540 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		DCCC7E161BC39681000BD540 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
+		DCCC7E171BC39681000BD540 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
+		DCCC7E1A1BC39A52000BD540 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		DCCC7E1B1BC39A52000BD540 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		FAE5145DD229B80054DF450F /* libPods-GeoLayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoLayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -94,10 +100,8 @@
 				DCCC7E101BC38C2D000BD540 /* Venue.m */,
 				DCCC7DEF1BC3865D000BD540 /* AppDelegate.h */,
 				DCCC7DF01BC3865D000BD540 /* AppDelegate.m */,
-				DCCC7E061BC3868F000BD540 /* Test.h */,
-				DCCC7E071BC3868F000BD540 /* Test.m */,
-				DCCC7DF21BC3865D000BD540 /* ViewController.h */,
-				DCCC7DF31BC3865D000BD540 /* ViewController.m */,
+				DCCC7E191BC3968B000BD540 /* Views */,
+				DCCC7E151BC38F8F000BD540 /* Controllers */,
 				DCCC7DF51BC3865D000BD540 /* Main.storyboard */,
 				DCCC7DFB1BC3865D000BD540 /* Assets.xcassets */,
 				DCCC7DFD1BC3865D000BD540 /* LaunchScreen.storyboard */,
@@ -114,6 +118,28 @@
 				DCCC7DED1BC3865D000BD540 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DCCC7E151BC38F8F000BD540 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DF21BC3865D000BD540 /* ViewController.h */,
+				DCCC7DF31BC3865D000BD540 /* ViewController.m */,
+				DCCC7E121BC38F7D000BD540 /* MainViewController.h */,
+				DCCC7E131BC38F7D000BD540 /* MainViewController.m */,
+				DCCC7E1A1BC39A52000BD540 /* DetailViewController.h */,
+				DCCC7E1B1BC39A52000BD540 /* DetailViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DCCC7E191BC3968B000BD540 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7E161BC39681000BD540 /* ItemCell.h */,
+				DCCC7E171BC39681000BD540 /* ItemCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,10 +247,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCCC7E081BC3868F000BD540 /* Test.m in Sources */,
 				DCCC7DF41BC3865D000BD540 /* ViewController.m in Sources */,
 				DCCC7DFA1BC3865D000BD540 /* GeoLayer.xcdatamodeld in Sources */,
 				DCCC7E111BC38C2D000BD540 /* Venue.m in Sources */,
+				DCCC7E1C1BC39A52000BD540 /* DetailViewController.m in Sources */,
+				DCCC7E181BC39681000BD540 /* ItemCell.m in Sources */,
+				DCCC7E141BC38F7D000BD540 /* MainViewController.m in Sources */,
 				DCCC7DF11BC3865D000BD540 /* AppDelegate.m in Sources */,
 				DCCC7DEE1BC3865D000BD540 /* main.m in Sources */,
 			);
