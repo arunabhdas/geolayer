@@ -16,5 +16,7 @@
 @property (nonatomic, strong) NSString *latlon;
 @property (nonatomic, strong) NSTimer *locationTimer;
 
+@property (nonatomic, assign) long selectedIndex;
+@property (nonatomic, strong) NSString *selectedName;
 
 @end

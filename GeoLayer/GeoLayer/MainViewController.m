@@ -12,6 +12,7 @@
 #import "Venue.h"
 #import "ItemCell.h"
 #import <CoreLocation/CoreLocation.h>
+#import "DetailViewController.h"
 #define MAINLABEL_TAG 1
 #define SECONDLABEL_TAG 2
 #define PHOTO_TAG 3
@@ -175,8 +176,11 @@
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"selected %ld row", (long)indexPath.row);
+    self.selectedIndex = indexPath.row;
     [self.view endEditing:YES];
     [self performSegueWithIdentifier:kMainToDetailSegue sender:self];
+
+    
 }
 
 - (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
@@ -187,7 +191,19 @@
     // otherwise do nothing
 }
 
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"MainToDetailSegue"])
+    {
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        DetailViewController *destViewController = segue.destinationViewController;
+        destViewController.selectedIndex = self.selectedIndex;
+        Venue *selectedVenue = [[Venue alloc] init];
+        selectedVenue = self.venues[self.selectedIndex];
+        destViewController.selectedName = selectedVenue.name;
+        // destViewController.selectedPictureLarge = self.selectedPictureLarge;
+    }
+}
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView

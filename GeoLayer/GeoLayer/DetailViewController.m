@@ -15,6 +15,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"DetailViewController %ld", self.selectedIndex);
+    NSLog(@"DetailViewController %@", self.selectedName);
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -27,17 +28,16 @@
     NSURL *imageUrl = [NSURL URLWithString:[self.selectedPictureLarge stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     UITextView *firstNameTextView = [[UITextView alloc] init];
-    NSString *fullName = [[[self.selectedFirstName capitalizedString] stringByAppendingString:@" "] stringByAppendingString:[self.selectedLastName capitalizedString]];
-    firstNameTextView.text = fullName;
+    firstNameTextView.text = self.selectedName;
     firstNameTextView.backgroundColor = [UIColor whiteColor];
     firstNameTextView.textColor = [UIColor blackColor];
-    firstNameTextView.font = [UIFont systemFontOfSize:14.0f];
+    firstNameTextView.font = [UIFont systemFontOfSize:20.0f];
     firstNameTextView.returnKeyType = UIReturnKeyDone;
-    firstNameTextView.textAlignment = NSTextAlignmentNatural;
+    firstNameTextView.textAlignment = NSTextAlignmentCenter;
     firstNameTextView.tag = 2;
     firstNameTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    [firstNameTextView.heightAnchor constraintEqualToConstant:50].active = true;
-    [firstNameTextView.widthAnchor constraintEqualToConstant:125].active = true;
+    [firstNameTextView.heightAnchor constraintEqualToConstant:100].active = true;
+    [firstNameTextView.widthAnchor constraintEqualToConstant:360].active = true;
     
 
     UIStackView *stackView = [[UIStackView alloc] init];
