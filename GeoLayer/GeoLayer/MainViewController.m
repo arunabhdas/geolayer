@@ -10,6 +10,7 @@
 #import "MainViewController.h"
 #import <RestKit/RestKit.h>
 #import "Venue.h"
+#import "Location.h"
 #import "ItemCell.h"
 #import <CoreLocation/CoreLocation.h>
 #import "DetailViewController.h"
@@ -84,6 +85,13 @@
                                                 statusCodes:[NSIndexSet indexSetWithIndex:200]];
     
     [objectManager addResponseDescriptor:responseDescriptor];
+    
+    // location object mapping
+    RKObjectMapping *locationMapping = [RKObjectMapping mappingForClass:[Location class]];
+    [locationMapping addAttributeMappingsFromArray:@[@"address", @"city", @"country", @"crossStreet", @"postalCode", @"state", @"distance", @"lat", @"lng"]];
+    
+    // define relationship mapping
+    [venueMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"location" toKeyPath:@"location" withMapping:locationMapping]];
     
     
     

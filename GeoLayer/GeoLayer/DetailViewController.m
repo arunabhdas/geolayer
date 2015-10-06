@@ -56,7 +56,14 @@
     
     //Layout for Stack View
     [stackView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = true;
-    [stackView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = true;
+    // [stackView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = true;
+   
+    // 50 pixels from the top of its superview and 40 pixels tall
+   
+    // align stackView from the top using https://autolayoutconstraints.com/
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[stackView]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(stackView)]];
+    
 }
 
 - (void)didReceiveMemoryWarning {
