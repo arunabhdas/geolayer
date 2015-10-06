@@ -192,7 +192,8 @@
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    [self.view endEditing:YES];
+    // [self.view endEditing:YES];
+    [self.searchController.searchBar endEditing:YES];
 }
 #pragma mark - UISearchBarDelegate
 
