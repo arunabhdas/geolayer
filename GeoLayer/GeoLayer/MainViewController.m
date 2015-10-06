@@ -11,10 +11,9 @@
 #import <RestKit/RestKit.h>
 #import "Venue.h"
 #import "ItemCell.h"
-#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface MainViewController() {
-   	CLLocationManager *locationManager;
 }
 
 @end
@@ -22,7 +21,14 @@
 @implementation MainViewController
 
 - (void)viewDidLoad {
-    // self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 90.0f)];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    self.locationManager.delegate = self;
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
+    NSLog(@"%@", [self deviceLocation]);
+    self.locationTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(stopUpdatingLocations) userInfo:nil repeats:NO];
     self.tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     self.tableView.delegate = self;
@@ -48,6 +54,10 @@
     
 }
 
+- (NSString *) deviceLocation {
+    self.latlon = [NSString stringWithFormat:@"%f,%f",self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude];
+    return [NSString stringWithFormat:@"latitude %f longitude %f ", self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude];
+}
 
 - (void)configureRestKit {
     // initialize AFNetworking HTTPClient
@@ -78,7 +88,7 @@
 }
 
 - (void)loadVenues:(NSString *)keyword {
-    NSString *latLon = @"40.7,-74.20";
+    // NSString *ll = @"40.7,-74.20";
     NSString *clientId = kClientId;
     NSString *clientSecret = kClientSecret;
     NSString *versionString = @"20151006";
@@ -87,8 +97,8 @@
     if (keyword.length) {
         queryString = keyword;
     }
-    
-    NSDictionary *queryParams = @{@"ll": latLon,
+    NSLog(@"%@", self.latlon);
+    NSDictionary *queryParams = @{@"ll": self.latlon,
                                   @"client_id": clientId,
                                   @"client_secret": clientSecret,
                                   @"v": versionString,
@@ -103,6 +113,11 @@
        NSLog(@"what do you mean by there's no coffee");
        
    }];
+    
+    
+}
+- (void) didReceiveMemoryWarning
+{
     
     
 }
@@ -169,7 +184,7 @@
 
 
 
-#pragma mark - UIGestureRecognizerDelegate
+#pragma mark - UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.view endEditing:YES];
@@ -196,6 +211,17 @@
     [self.tableView reloadData];
 }
 
+#pragma mark CLLocationManagerDelegate
+- (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"didUpdateToLocation :latitude %f longitude %f ", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    self.latlon = [NSString stringWithFormat:@"%f,%f", newLocation.coordinate.latitude, newLocation.coordinate.longitude];
+}
 
-
+- (void)stopUpdatingLocations
+{
+    [self.locationManager stopUpdatingLocation];
+    
+    [self.locationTimer invalidate];
+}
 @end

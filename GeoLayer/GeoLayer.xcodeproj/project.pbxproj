@@ -19,6 +19,8 @@
 		DCCC7E141BC38F7D000BD540 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E131BC38F7D000BD540 /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
 		DCCC7E181BC39681000BD540 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E171BC39681000BD540 /* ItemCell.m */; settings = {ASSET_TAGS = (); }; };
 		DCCC7E1C1BC39A52000BD540 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E1B1BC39A52000BD540 /* DetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7E1E1BC3B7BF000BD540 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCC7E1D1BC3B7BF000BD540 /* CoreLocation.framework */; };
+		DCCC7E201BC3B95B000BD540 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCC7E1F1BC3B95B000BD540 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		DCCC7E171BC39681000BD540 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
 		DCCC7E1A1BC39A52000BD540 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		DCCC7E1B1BC39A52000BD540 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		DCCC7E1D1BC3B7BF000BD540 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DCCC7E1F1BC3B95B000BD540 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FAE5145DD229B80054DF450F /* libPods-GeoLayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoLayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -51,6 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCCC7E201BC3B95B000BD540 /* MapKit.framework in Frameworks */,
+				DCCC7E1E1BC3B7BF000BD540 /* CoreLocation.framework in Frameworks */,
 				288E5721D00CA5B42F1C83F8 /* libPods-GeoLayer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,6 +76,8 @@
 		A6299E41BF19AE7A5D1A5128 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DCCC7E1F1BC3B95B000BD540 /* MapKit.framework */,
+				DCCC7E1D1BC3B7BF000BD540 /* CoreLocation.framework */,
 				FAE5145DD229B80054DF450F /* libPods-GeoLayer.a */,
 			);
 			name = Frameworks;
