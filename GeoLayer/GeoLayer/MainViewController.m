@@ -93,28 +93,24 @@
     NSString *clientSecret = kClientSecret;
     NSString *versionString = @"20151006";
     
-    NSString *queryString = @"sushi";
     if (keyword.length) {
-        queryString = keyword;
-    }
-    NSLog(@"%@", self.latlon);
-    NSDictionary *queryParams = @{@"ll": self.latlon,
+        NSLog(@"%@", self.latlon);
+        NSDictionary *queryParams = @{@"ll": self.latlon,
                                   @"client_id": clientId,
                                   @"client_secret": clientSecret,
                                   @"v": versionString,
-                                  @"query": queryString
+                                  @"query": keyword
                                   };
     
-   [[RKObjectManager sharedManager] getObjectsAtPath:@"/v2/venues/search" parameters:queryParams
+        [[RKObjectManager sharedManager] getObjectsAtPath:@"/v2/venues/search" parameters:queryParams
                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                  self.venues = mappingResult.array;
                                                  [self.tableView reloadData];
-   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-       NSLog(@"what do you mean by there's no coffee");
+                                             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"what do you mean by there's no coffee");
        
-   }];
-    
-    
+        }];
+    }
 }
 - (void) didReceiveMemoryWarning
 {
