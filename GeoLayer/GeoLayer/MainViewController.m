@@ -172,7 +172,7 @@
     
     Venue *venue = self.venues[indexPath.row];
     cell.mainLabel.text = venue.name;
-    cell.secondaryLabel.text = venue.name;
+    cell.secondaryLabel.text = [NSString stringWithFormat:@"%.0fm", venue.location.distance.floatValue];
     cell.photoView = (UIImageView *)[cell.contentView viewWithTag:PHOTO_TAG];
     
     return cell;
