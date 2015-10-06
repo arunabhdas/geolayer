@@ -20,10 +20,10 @@
 - (void) viewWillAppear:(BOOL)animated {
     //View 1
     UIImageView *contactImageView = [[UIImageView alloc] init];
-    contactImageView.image = [UIImage imageNamed:@"user"];
+    contactImageView.image = [UIImage imageNamed:@"martini"];
     [contactImageView.heightAnchor constraintEqualToConstant:200].active = true;
     [contactImageView.widthAnchor constraintEqualToConstant:180].active = true;
-    UIImage *defaultImage = [UIImage imageNamed:@"user"];
+    UIImage *defaultImage = [UIImage imageNamed:@"martini"];
     NSURL *imageUrl = [NSURL URLWithString:[self.selectedPictureLarge stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     UITextView *firstNameTextView = [[UITextView alloc] init];

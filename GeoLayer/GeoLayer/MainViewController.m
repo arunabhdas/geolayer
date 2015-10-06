@@ -12,7 +12,9 @@
 #import "Venue.h"
 #import "ItemCell.h"
 #import <CoreLocation/CoreLocation.h>
-
+#define MAINLABEL_TAG 1
+#define SECONDLABEL_TAG 2
+#define PHOTO_TAG 3
 @interface MainViewController() {
 }
 
@@ -120,6 +122,11 @@
 #pragma mark - DataSource
 #pragma mark - Table view data source
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100.0;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
@@ -139,26 +146,27 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+   
+    UILabel *mainLabel, *secondLabel;
     
+    ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath] ;
     
-    ItemCell *itemCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath] ;
+    UIImageView *photo;
     
-    if (itemCell == nil)
+    if (cell == nil)
     {
-        itemCell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        itemCell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        cell = [[ItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        
+        
     }
     
     Venue *venue = self.venues[indexPath.row];
-    itemCell.textLabel.text = venue.name;
+    cell.mainLabel.text = venue.name;
+    cell.secondaryLabel.text = venue.name;
+    cell.photoView = (UIImageView *)[cell.contentView viewWithTag:PHOTO_TAG];
     
-    itemCell.titleLabel.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
-    itemCell.descriptionLabel.text = [venue.name capitalizedString];
-    itemCell.descriptionLabel.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
-    
-    itemCell.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
-    
-    return itemCell;
+    return cell;
     
 }
 

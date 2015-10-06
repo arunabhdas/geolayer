@@ -19,31 +19,24 @@
         // self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
         // UIGraphicsEndImageContext();
         
+        self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(80.0, 10.0, self.frame.size.width, 50.0)];
+        self.mainLabel.font = [UIFont fontWithName:@"Helvetica-Neue" size:24.0f];
+        // self.mainLabel.textAlignment = UITextAlignmentLeft;
+        self.mainLabel.textColor = [UIColor blackColor];
+        // self.mainLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        [self addSubview:self.mainLabel];
         
-        // self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, 200, 30)];
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(
-                                                                    30,
-                                                                    10,
-                                                                    100,
-                                                                    30
-                                                                    )];
+        self.secondaryLabel = [[UILabel alloc] initWithFrame:CGRectMake(80.0, 40.0, self.frame.size.width, 50.0)];
+        self.secondaryLabel.font = [UIFont fontWithName:@"Helvetica-Neue" size:24.0f];
+        // self.secondaryLabel.textAlignment = UITextAlignmentLeft;
+        self.secondaryLabel.textColor = [UIColor darkGrayColor];
+        // self.secondaryLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        [self addSubview:self.secondaryLabel];
         
-        self.titleLabel.textColor = [UIColor blackColor];
-        self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Neue" size:24.0f];
-        self.titleLabel.translatesAutoresizingMaskIntoConstraints = YES;
-
-        
-        // self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(275, 10, 100, 30)];
-        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bounds.size.width-60,
-                                                                          0,
-                                                                          100,
-                                                                          30)];
-        self.descriptionLabel.textColor = [UIColor blackColor];
-        self.descriptionLabel.font = [UIFont fontWithName:@"Helvetica-Neue" size:24.0f];
-        self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = YES;
-        // [self addSubview:self.iconImageView];
-        [self addSubview:self.titleLabel];
-        [self addSubview:self.descriptionLabel];
+        self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(10.0, 25.0, 50.0, 50.0)];
+        // self.photoView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        self.photoView.image = [UIImage imageNamed:@"martini"];
+        [self addSubview:self.photoView];
         
         
         

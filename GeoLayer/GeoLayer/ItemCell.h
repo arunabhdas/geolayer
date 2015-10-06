@@ -7,8 +7,8 @@
 
 @interface ItemCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
-@property (nonatomic, strong) IBOutlet UILabel *descriptionLabel;
-@property (nonatomic, strong) IBOutlet UIImageView *iconImageView;
+@property (nonatomic, strong) IBOutlet UILabel *mainLabel;
+@property (nonatomic, strong) IBOutlet UILabel *secondaryLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *photoView;
 
 @end
