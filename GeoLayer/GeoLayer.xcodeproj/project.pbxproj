@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		288E5721D00CA5B42F1C83F8 /* libPods-GeoLayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5145DD229B80054DF450F /* libPods-GeoLayer.a */; };
 		DCCC7DEE1BC3865D000BD540 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DED1BC3865D000BD540 /* main.m */; };
 		DCCC7DF11BC3865D000BD540 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF01BC3865D000BD540 /* AppDelegate.m */; };
 		DCCC7DF41BC3865D000BD540 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7DF31BC3865D000BD540 /* ViewController.m */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47EA2F545A1D5342D99067C0 /* Pods-GeoLayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoLayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoLayer/Pods-GeoLayer.release.xcconfig"; sourceTree = "<group>"; };
+		C89498C8EC2003AEB1A1B705 /* Pods-GeoLayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoLayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoLayer/Pods-GeoLayer.debug.xcconfig"; sourceTree = "<group>"; };
 		DCCC7DE91BC3865D000BD540 /* GeoLayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoLayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCC7DED1BC3865D000BD540 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DCCC7DEF1BC3865D000BD540 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		DCCC7E071BC3868F000BD540 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		DCCC7E0F1BC38C2D000BD540 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Venue.h; path = ../Venue.h; sourceTree = "<group>"; };
 		DCCC7E101BC38C2D000BD540 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Venue.m; path = ../Venue.m; sourceTree = "<group>"; };
+		FAE5145DD229B80054DF450F /* libPods-GeoLayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoLayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				288E5721D00CA5B42F1C83F8 /* libPods-GeoLayer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C196CFE1F31F9488598F906 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C89498C8EC2003AEB1A1B705 /* Pods-GeoLayer.debug.xcconfig */,
+				47EA2F545A1D5342D99067C0 /* Pods-GeoLayer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A6299E41BF19AE7A5D1A5128 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAE5145DD229B80054DF450F /* libPods-GeoLayer.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DCCC7DE01BC3865D000BD540 = {
 			isa = PBXGroup;
 			children = (
 				DCCC7DEB1BC3865D000BD540 /* GeoLayer */,
 				DCCC7DEA1BC3865D000BD540 /* Products */,
+				9C196CFE1F31F9488598F906 /* Pods */,
+				A6299E41BF19AE7A5D1A5128 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DCCC7E031BC3865D000BD540 /* Build configuration list for PBXNativeTarget "GeoLayer" */;
 			buildPhases = (
+				273B2CDFE256A6588E757646 /* Check Pods Manifest.lock */,
 				DCCC7DE51BC3865D000BD540 /* Sources */,
 				DCCC7DE61BC3865D000BD540 /* Frameworks */,
 				DCCC7DE71BC3865D000BD540 /* Resources */,
+				3732882E3A431375F5E6488F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,6 +182,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		273B2CDFE256A6588E757646 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3732882E3A431375F5E6488F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeoLayer/Pods-GeoLayer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DCCC7DE51BC3865D000BD540 /* Sources */ = {
@@ -277,6 +336,7 @@
 		};
 		DCCC7E041BC3865D000BD540 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C89498C8EC2003AEB1A1B705 /* Pods-GeoLayer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GeoLayer/Info.plist;
@@ -288,6 +348,7 @@
 		};
 		DCCC7E051BC3865D000BD540 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47EA2F545A1D5342D99067C0 /* Pods-GeoLayer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GeoLayer/Info.plist;
@@ -316,6 +377,7 @@
 				DCCC7E051BC3865D000BD540 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
