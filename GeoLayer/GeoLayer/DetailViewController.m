@@ -19,8 +19,15 @@ static NSString *const kNotAvailable = @"Not Available";
     NSLog(@"DetailViewController %@", self.selectedName);
 }
 
-- (void) viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
 
+}
+
+- (void)viewWillLayoutSubviews {
+    [self layoutAllViews];
+}
+
+- (void)layoutAllViews {
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     // 1
     UIImageView *photoView = [[UIImageView alloc] init];
@@ -45,7 +52,7 @@ static NSString *const kNotAvailable = @"Not Available";
     [nameTextView.widthAnchor constraintGreaterThanOrEqualToConstant:360].active = true;
     nameTextView.translatesAutoresizingMaskIntoConstraints = NO;
     
-   
+    
     // phone
     UILabel *phoneLabel = [[UILabel alloc] init];
     phoneLabel.text = @"Phone : ";
@@ -106,7 +113,7 @@ static NSString *const kNotAvailable = @"Not Available";
     //Layout for Stack View
     [stackView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = true;
     // [stackView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = true;
-   
+    
     NSLayoutConstraint *constraint = [NSLayoutConstraint
                                       constraintWithItem: stackView
                                       attribute: NSLayoutAttributeTop
@@ -119,29 +126,27 @@ static NSString *const kNotAvailable = @"Not Available";
     [self.view addConstraint:constraint];
     
     constraint = [NSLayoutConstraint
-                                      constraintWithItem:phoneLabel
-                                      attribute: NSLayoutAttributeTop
-                                      relatedBy: NSLayoutRelationLessThanOrEqual
-                                      toItem: nameTextView
-                                      attribute: NSLayoutAttributeTop
-                                      multiplier:1.0
-                                      constant:50.0];
-
+                  constraintWithItem:phoneLabel
+                  attribute: NSLayoutAttributeTop
+                  relatedBy: NSLayoutRelationLessThanOrEqual
+                  toItem: nameTextView
+                  attribute: NSLayoutAttributeTop
+                  multiplier:1.0
+                  constant:50.0];
+    
     [self.view addConstraint:constraint];
     
     
     // align stackView from the top using https://autolayoutconstraints.com/
     /*
-    NSDictionary *elementsDict = NSDictionaryOfVariableBindings(photoView, nameTextView, descriptionTextView, stackView);
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[stackView]" options:0 metrics:nil views:elementsDict]];
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[nameTextView]" options:0 metrics:nil views:elementsDict]];
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-150-[descriptionTextView]" options:0 metrics:nil views:elementsDict]];
-    */
-    
-    
+     NSDictionary *elementsDict = NSDictionaryOfVariableBindings(photoView, nameTextView, descriptionTextView, stackView);
+     
+     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[stackView]" options:0 metrics:nil views:elementsDict]];
+     
+     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[nameTextView]" options:0 metrics:nil views:elementsDict]];
+     
+     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-150-[descriptionTextView]" options:0 metrics:nil views:elementsDict]];
+     */
 }
 
 - (void)didReceiveMemoryWarning {
