@@ -4,7 +4,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import <RestKit/RestKit.h>
 @interface AppDelegate ()
 
 @end
@@ -14,6 +14,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelDebug);
+    RKLogConfigureByName("RestKit/Network", RKLogLevelDebug);
     return YES;
 }
 

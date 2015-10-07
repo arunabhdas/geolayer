@@ -24,6 +24,7 @@
 		DCCC7E241BC48678000BD540 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E231BC48678000BD540 /* Location.m */; settings = {ASSET_TAGS = (); }; };
 		DCCC7E271BC49F55000BD540 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E261BC49F55000BD540 /* Contact.m */; settings = {ASSET_TAGS = (); }; };
 		DCCC7E2D1BC4A606000BD540 /* Icon.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E2C1BC4A606000BD540 /* Icon.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7E461BC506E0000BD540 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E451BC506DF000BD540 /* Item.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		DCCC7E261BC49F55000BD540 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		DCCC7E2B1BC4A606000BD540 /* Icon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Icon.h; sourceTree = "<group>"; };
 		DCCC7E2C1BC4A606000BD540 /* Icon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Icon.m; sourceTree = "<group>"; };
+		DCCC7E441BC506DF000BD540 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		DCCC7E451BC506DF000BD540 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		FAE5145DD229B80054DF450F /* libPods-GeoLayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoLayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -168,6 +171,8 @@
 				DCCC7E261BC49F55000BD540 /* Contact.m */,
 				DCCC7E2B1BC4A606000BD540 /* Icon.h */,
 				DCCC7E2C1BC4A606000BD540 /* Icon.m */,
+				DCCC7E441BC506DF000BD540 /* Item.h */,
+				DCCC7E451BC506DF000BD540 /* Item.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCCC7E461BC506E0000BD540 /* Item.m in Sources */,
 				DCCC7DF41BC3865D000BD540 /* ViewController.m in Sources */,
 				DCCC7E2D1BC4A606000BD540 /* Icon.m in Sources */,
 				DCCC7DFA1BC3865D000BD540 /* GeoLayer.xcdatamodeld in Sources */,

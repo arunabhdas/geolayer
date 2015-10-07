@@ -4,7 +4,7 @@
 //
 #define kClientId @"4HJKQ3GGLO5MJ4X14OGMKSPGVXFF34BUZ4TE0BKM032DFFKA"
 #define kClientSecret @"KZ0JJL0REUQUCTT3V4RZMC5VFFHRTQVHCNEXRJOW30JPDLUN"
-#define BASE_URL @"https://api.foursquare.com/v2/venues/search?client_id=4HJKQ3GGLO5MJ4X14OGMKSPGVXFF34BUZ4TE0BKM032DFFKA&client_secret=KZ0JJL0REUQUCTT3V4RZMC5VFFHRTQVHCNEXRJOW30JPDLUN&v=20130815%20&ll=40.7,-74%20&query=sushi"
+#define SAMPLE_URL @"https://api.foursquare.com/v2/venues/search?client_id=4HJKQ3GGLO5MJ4X14OGMKSPGVXFF34BUZ4TE0BKM032DFFKA&client_secret=KZ0JJL0REUQUCTT3V4RZMC5VFFHRTQVHCNEXRJOW30JPDLUN&v=20130815%20&ll=40.7,-74%20&query=sushi"
 #define kAppTitle @"Geo Layer"
 #define kMainToDetailSegue @"MainToDetailSegue"
 #import "MainViewController.h"
@@ -76,7 +76,7 @@
     // setup object mappings
     RKObjectMapping *venueMapping = [RKObjectMapping mappingForClass:[Venue class]];
     
-    [venueMapping addAttributeMappingsFromArray:@[@"name"]];
+    [venueMapping addAttributeMappingsFromArray:@[@"id", @"name"]];
     
     // register mappings with the provider using a response descriptor
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor

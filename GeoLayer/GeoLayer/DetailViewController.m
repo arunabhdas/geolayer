@@ -3,9 +3,13 @@
 //  ContactList
 //
 
+#define kClientId @"4HJKQ3GGLO5MJ4X14OGMKSPGVXFF34BUZ4TE0BKM032DFFKA"
+#define kClientSecret @"KZ0JJL0REUQUCTT3V4RZMC5VFFHRTQVHCNEXRJOW30JPDLUN"
+#define kSampleUrl @"https://api.foursquare.com/v2/venues/45ac12d6f964a5205d411fe3/photos?client_id=4HJKQ3GGLO5MJ4X14OGMKSPGVXFF34BUZ4TE0BKM032DFFKA&client_secret=KZ0JJL0REUQUCTT3V4RZMC5VFFHRTQVHCNEXRJOW30JPDLUN&v=20130815"
 
 #import "DetailViewController.h"
-
+#import <RestKit/RestKit.h>
+#import "Item.h"
 @interface DetailViewController ()
 
 @end
@@ -14,11 +18,70 @@ static NSString *const kNotAvailable = @"Not Available";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"========================================");
     // Do any additional setup after loading the view.
     NSLog(@"DetailViewController %ld", self.selectedIndex);
     NSLog(@"DetailViewController %@", self.selectedName);
+    self.selectedId = self.selectedVenue.id;
+    [self configureRestKit];
+    [self loadItems];
 }
 
+- (void)configureRestKit {
+    // initialize AFNetworking HTTPClient
+    
+    NSURL *baseURL = [NSURL URLWithString:@"https://api.foursquare.com"];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    NSString *selId = self.selectedId;
+    // initialize RestKit
+    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    
+    // setup object mappings
+    RKObjectMapping *itemMapping = [RKObjectMapping mappingForClass:[Item class]];
+    
+    [itemMapping addAttributeMappingsFromArray:@[@"createdAt", @"height", @"id", @"prefix", @"suffix", @"visibility", @"width"]];
+    
+    // register mappings with the provider using a response descriptor
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor
+                                                responseDescriptorWithMapping:itemMapping
+                                                method:RKRequestMethodGET pathPattern:@"/v2/venues/:id/photos"
+                                                keyPath:@"response.photos.items"
+                                                statusCodes:[NSIndexSet indexSetWithIndex:200]];
+
+    /*
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor
+                                                responseDescriptorWithMapping:itemMapping
+                                                method:RKRequestMethodGET pathPattern:nil
+                                                keyPath:@"response.photos.items"
+                                                statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    */
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+}
+- (void)loadItems {
+    NSString *clientId = kClientId;
+    NSString *clientSecret = kClientSecret;
+    NSString *versionString = @"20151006";
+    // NSString *path = @"/v2/venues/45ac12d6f964a5205d411fe3/photos";
+    NSString *path = [@"/v2/venues/" stringByAppendingString:self.selectedId];
+    path = [path stringByAppendingString:@"/photos"];
+    NSDictionary *queryParams = @{@"client_id": clientId,
+                                  @"client_secret": clientSecret,
+                                  @"v": versionString,
+                                 };
+        
+        [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:queryParams
+                                                  success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                      self.items = mappingResult.array;
+                                                      NSLog(@"------------------------mapping Result %@", mappingResult);
+                                                      for (Item *item in self.items) {
+                                                          NSLog(@"prefix %@", item.prefix);
+                                                      }
+                                                  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                      NSLog(@"what do you mean by there's no coffee");
+                                                      
+                                                  }];
+}
 - (void)viewWillAppear:(BOOL)animated {
 
 }

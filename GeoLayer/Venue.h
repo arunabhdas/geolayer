@@ -11,6 +11,7 @@
 @class Contact;
 @interface Venue : NSObject
 
+@property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic) BOOL verified;
 @property (nonatomic, strong) NSString *url;
