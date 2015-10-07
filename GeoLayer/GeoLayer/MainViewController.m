@@ -89,7 +89,7 @@
     
     // location object mapping
     RKObjectMapping *locationMapping = [RKObjectMapping mappingForClass:[Location class]];
-    [locationMapping addAttributeMappingsFromArray:@[@"address", @"city", @"country", @"crossStreet", @"postalCode", @"state", @"distance", @"lat", @"lng"]];
+    [locationMapping addAttributeMappingsFromArray:@[@"address", @"crossStreet", @"lat", @"lng", @"distance", @"postalCode", @"cc", @"city", @"state", @"country", @"formattedAddress"]];
     
     // define relationship mapping
     [venueMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"location" toKeyPath:@"location" withMapping:locationMapping]];

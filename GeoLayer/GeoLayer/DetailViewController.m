@@ -46,36 +46,53 @@ static NSString *const kNotAvailable = @"Not Available";
     nameTextView.font = [UIFont systemFontOfSize:20.0f];
     nameTextView.returnKeyType = UIReturnKeyDone;
     nameTextView.textAlignment = NSTextAlignmentCenter;
+    nameTextView.editable = NO;
     nameTextView.tag = 2;
     nameTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    [nameTextView.heightAnchor constraintEqualToConstant:100].active = true;
+    [nameTextView.heightAnchor constraintEqualToConstant:50].active = true;
     [nameTextView.widthAnchor constraintGreaterThanOrEqualToConstant:360].active = true;
     nameTextView.translatesAutoresizingMaskIntoConstraints = NO;
     
     
     // phone
-    UILabel *phoneLabel = [[UILabel alloc] init];
-    phoneLabel.text = @"Phone : ";
+    UITextView *phoneTextView = [[UITextView alloc] init];
+    phoneTextView.text = @"Phone : ";
     if (self.selectedVenue.contact.phone.length) {
-        phoneLabel.text = [phoneLabel.text stringByAppendingString:self.selectedVenue.contact.phone];
+        phoneTextView.text = [phoneTextView.text stringByAppendingString:self.selectedVenue.contact.phone];
     } else {
-        phoneLabel.text = [phoneLabel.text stringByAppendingString:kNotAvailable];
+        phoneTextView.text = [phoneTextView.text stringByAppendingString:kNotAvailable];
     }
-    phoneLabel.backgroundColor = [UIColor whiteColor];
-    phoneLabel.textColor = [UIColor blackColor];
-    phoneLabel.font = [UIFont systemFontOfSize:20.0f];
-    phoneLabel.textAlignment = NSTextAlignmentCenter;
-    phoneLabel.tag = 3;
-    [phoneLabel.heightAnchor constraintEqualToConstant:100].active = true;
-    [phoneLabel.widthAnchor constraintGreaterThanOrEqualToConstant:360].active = true;
-    phoneLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    
+    phoneTextView.backgroundColor = [UIColor whiteColor];
+    phoneTextView.textColor = [UIColor blackColor];
+    phoneTextView.font = [UIFont systemFontOfSize:20.0f];
+    phoneTextView.textAlignment = NSTextAlignmentCenter;
+    phoneTextView.tag = 3;
+    [phoneTextView.heightAnchor constraintEqualToConstant:50].active = true;
+    [phoneTextView.widthAnchor constraintGreaterThanOrEqualToConstant:360].active = true;
+    phoneTextView.translatesAutoresizingMaskIntoConstraints = NO;
+   
+    // twitter
+    UITextView *twitterTextView = [[UITextView alloc] init];
+    twitterTextView.text = @"Twitter : ";
+    if (self.selectedVenue.contact.twitter.length) {
+        twitterTextView.text = [twitterTextView.text stringByAppendingString:self.selectedVenue.contact.twitter];
+    } else {
+        twitterTextView.text = [twitterTextView.text stringByAppendingString:kNotAvailable];
+    }
+    twitterTextView.backgroundColor = [UIColor whiteColor];
+    twitterTextView.textColor = [UIColor blackColor];
+    twitterTextView.font = [UIFont systemFontOfSize:20.0f];
+    twitterTextView.textAlignment = NSTextAlignmentCenter;
+    twitterTextView.tag = 3;
+    [twitterTextView.heightAnchor constraintEqualToConstant:50].active = true;
+    [twitterTextView.widthAnchor constraintGreaterThanOrEqualToConstant:360].active = true;
+    twitterTextView.translatesAutoresizingMaskIntoConstraints = NO;
     
     // address
     UITextView *descriptionTextView = [[UITextView alloc] init];
     descriptionTextView.text = @"Address : ";
-    if (self.selectedVenue.location.address.length) {
-        descriptionTextView.text = [descriptionTextView.text stringByAppendingString:self.selectedVenue.location.address];
+    if (self.selectedVenue.location.formattedAddress.length) {
+        descriptionTextView.text = [descriptionTextView.text stringByAppendingString:self.selectedVenue.location.formattedAddress];
     } else {
         descriptionTextView.text = [descriptionTextView.text stringByAppendingString:kNotAvailable];
     }
@@ -101,7 +118,8 @@ static NSString *const kNotAvailable = @"Not Available";
     
     [stackView addArrangedSubview:photoView];
     [stackView addArrangedSubview:nameTextView];
-    [stackView addArrangedSubview:phoneLabel];
+    [stackView addArrangedSubview:phoneTextView];
+    [stackView addArrangedSubview:twitterTextView];
     [stackView addArrangedSubview:descriptionTextView];
     
     stackView.translatesAutoresizingMaskIntoConstraints = false;
@@ -124,9 +142,10 @@ static NSString *const kNotAvailable = @"Not Available";
                                       constant:80.0];
     
     [self.view addConstraint:constraint];
-    
+   
+    /*
     constraint = [NSLayoutConstraint
-                  constraintWithItem:phoneLabel
+                  constraintWithItem:phoneTextView
                   attribute: NSLayoutAttributeTop
                   relatedBy: NSLayoutRelationLessThanOrEqual
                   toItem: nameTextView
@@ -135,6 +154,7 @@ static NSString *const kNotAvailable = @"Not Available";
                   constant:50.0];
     
     [self.view addConstraint:constraint];
+    */
     
     
     // align stackView from the top using https://autolayoutconstraints.com/
