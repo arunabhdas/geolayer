@@ -23,6 +23,7 @@
 		DCCC7E201BC3B95B000BD540 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCC7E1F1BC3B95B000BD540 /* MapKit.framework */; };
 		DCCC7E241BC48678000BD540 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E231BC48678000BD540 /* Location.m */; settings = {ASSET_TAGS = (); }; };
 		DCCC7E271BC49F55000BD540 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E261BC49F55000BD540 /* Contact.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7E2D1BC4A606000BD540 /* Icon.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E2C1BC4A606000BD540 /* Icon.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		DCCC7E231BC48678000BD540 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		DCCC7E251BC49F55000BD540 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		DCCC7E261BC49F55000BD540 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		DCCC7E2B1BC4A606000BD540 /* Icon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Icon.h; sourceTree = "<group>"; };
+		DCCC7E2C1BC4A606000BD540 /* Icon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Icon.m; sourceTree = "<group>"; };
 		FAE5145DD229B80054DF450F /* libPods-GeoLayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoLayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -110,9 +113,8 @@
 		DCCC7DEB1BC3865D000BD540 /* GeoLayer */ = {
 			isa = PBXGroup;
 			children = (
+				DCCC7E2E1BC4A8C9000BD540 /* AppDelegate */,
 				DCCC7E211BC44F42000BD540 /* Model */,
-				DCCC7DEF1BC3865D000BD540 /* AppDelegate.h */,
-				DCCC7DF01BC3865D000BD540 /* AppDelegate.m */,
 				DCCC7E191BC3968B000BD540 /* Views */,
 				DCCC7E151BC38F8F000BD540 /* Controllers */,
 				DCCC7DF51BC3865D000BD540 /* Main.storyboard */,
@@ -164,8 +166,19 @@
 				DCCC7E231BC48678000BD540 /* Location.m */,
 				DCCC7E251BC49F55000BD540 /* Contact.h */,
 				DCCC7E261BC49F55000BD540 /* Contact.m */,
+				DCCC7E2B1BC4A606000BD540 /* Icon.h */,
+				DCCC7E2C1BC4A606000BD540 /* Icon.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		DCCC7E2E1BC4A8C9000BD540 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7DEF1BC3865D000BD540 /* AppDelegate.h */,
+				DCCC7DF01BC3865D000BD540 /* AppDelegate.m */,
+			);
+			name = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCCC7DF41BC3865D000BD540 /* ViewController.m in Sources */,
+				DCCC7E2D1BC4A606000BD540 /* Icon.m in Sources */,
 				DCCC7DFA1BC3865D000BD540 /* GeoLayer.xcdatamodeld in Sources */,
 				DCCC7E271BC49F55000BD540 /* Contact.m in Sources */,
 				DCCC7E111BC38C2D000BD540 /* Venue.m in Sources */,

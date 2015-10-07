@@ -19,4 +19,7 @@
 @property (nonatomic, assign) long selectedIndex;
 @property (nonatomic, strong) NSString *selectedName;
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
+
 @end

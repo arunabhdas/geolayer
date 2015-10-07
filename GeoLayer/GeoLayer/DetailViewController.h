@@ -4,12 +4,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Venue.h"
 @interface DetailViewController : UIViewController
 
 @property (nonatomic, assign) long selectedIndex;
 @property (nonatomic, assign) NSString *selectedName;
-@property (nonatomic, assign) NSString *selectedDescription;
-@property (nonatomic, assign) NSString *selectedPictureLarge;
-
+@property (nonatomic, assign) Venue *selectedVenue;
 @end

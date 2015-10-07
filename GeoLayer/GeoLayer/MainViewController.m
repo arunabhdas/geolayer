@@ -100,6 +100,7 @@
     
     [venueMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"contact" toKeyPath:@"contact" withMapping:contactMapping]];
     
+    
 }
 
 - (void)loadVenues:(NSString *)keyword {
@@ -174,8 +175,7 @@
     
     Venue *venue = self.venues[indexPath.row];
     cell.mainLabel.text = venue.name;
-    // cell.secondaryLabel.text = [NSString stringWithFormat:@"%.0fm", venue.location.distance.floatValue];
-    cell.secondaryLabel.text = venue.contact.phone;
+    cell.secondaryLabel.text = [NSString stringWithFormat:@"%.0fm", venue.location.distance.floatValue];
     cell.photoView = (UIImageView *)[cell.contentView viewWithTag:PHOTO_TAG];
     
     return cell;
@@ -212,6 +212,7 @@
         Venue *selectedVenue = [[Venue alloc] init];
         selectedVenue = self.venues[self.selectedIndex];
         destViewController.selectedName = selectedVenue.name;
+        destViewController.selectedVenue = selectedVenue;
         // destViewController.selectedPictureLarge = self.selectedPictureLarge;
     }
 }

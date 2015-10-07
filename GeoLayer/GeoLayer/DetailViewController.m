@@ -19,14 +19,16 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     // 1
     UIImageView *photoView = [[UIImageView alloc] init];
     photoView.image = [UIImage imageNamed:@"martini"];
-    [photoView.heightAnchor constraintEqualToConstant:200].active = true;
-    [photoView.widthAnchor constraintEqualToConstant:180].active = true;
+    [photoView.heightAnchor constraintEqualToConstant:100].active = true;
+    [photoView.widthAnchor constraintEqualToConstant:100].active = true;
     UIImage *defaultImage = [UIImage imageNamed:@"martini"];
-    NSURL *imageUrl = [NSURL URLWithString:[self.selectedPictureLarge stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    
+    // NSURL *imageUrl = [NSURL URLWithString:[self.selectedPictureLarge stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    photoView.translatesAutoresizingMaskIntoConstraints = NO;
     
     // 2
     UITextView *nameTextView = [[UITextView alloc] init];
@@ -40,33 +42,40 @@
     nameTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [nameTextView.heightAnchor constraintEqualToConstant:100].active = true;
     [nameTextView.widthAnchor constraintEqualToConstant:360].active = true;
+    nameTextView.translatesAutoresizingMaskIntoConstraints = NO;
+    
     
     // 3
-    UITextView *TextView = [[UITextView alloc] init];
-    nameTextView.text = self.selectedName;
-    nameTextView.backgroundColor = [UIColor whiteColor];
-    nameTextView.textColor = [UIColor blackColor];
-    nameTextView.font = [UIFont systemFontOfSize:20.0f];
-    nameTextView.returnKeyType = UIReturnKeyDone;
-    nameTextView.textAlignment = NSTextAlignmentCenter;
-    nameTextView.tag = 2;
-    nameTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    [nameTextView.heightAnchor constraintEqualToConstant:100].active = true;
-    [nameTextView.widthAnchor constraintEqualToConstant:360].active = true;
+    UITextView *descriptionTextView = [[UITextView alloc] init];
+    descriptionTextView.text = self.selectedVenue.location.address;
+    descriptionTextView.backgroundColor = [UIColor whiteColor];
+    descriptionTextView.textColor = [UIColor blackColor];
+    descriptionTextView.font = [UIFont systemFontOfSize:20.0f];
+    descriptionTextView.returnKeyType = UIReturnKeyDone;
+    descriptionTextView.textAlignment = NSTextAlignmentCenter;
+    descriptionTextView.tag = 3;
+    descriptionTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [descriptionTextView.heightAnchor constraintEqualToConstant:100].active = true;
+    [descriptionTextView.widthAnchor constraintEqualToConstant:360].active = true;
+    descriptionTextView.translatesAutoresizingMaskIntoConstraints = NO;
     
     UIStackView *stackView = [[UIStackView alloc] init];
     stackView.axis = UILayoutConstraintAxisVertical;
     stackView.distribution = UIStackViewDistributionEqualSpacing;
     stackView.alignment = UIStackViewAlignmentCenter;
-    stackView.spacing = 30;
+    stackView.spacing = 10;
+    stackView.translatesAutoresizingMaskIntoConstraints = NO;
     
     
     [stackView addArrangedSubview:photoView];
     [stackView addArrangedSubview:nameTextView];
+    [stackView addArrangedSubview:descriptionTextView];
     
     stackView.translatesAutoresizingMaskIntoConstraints = false;
-    [self.view addSubview:stackView];
+    // [self.view addSubview:stackView];
+    [scrollView addSubview:stackView];
     
+    [self.view addSubview:scrollView];
     
     //Layout for Stack View
     [stackView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = true;
@@ -76,7 +85,14 @@
    
     // align stackView from the top using https://autolayoutconstraints.com/
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[stackView]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(stackView)]];
+    NSDictionary *elementsDict = NSDictionaryOfVariableBindings(photoView, nameTextView, descriptionTextView, stackView);
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[stackView]" options:0 metrics:nil views:elementsDict]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[nameTextView]" options:0 metrics:nil views:elementsDict]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-150-[descriptionTextView]" options:0 metrics:nil views:elementsDict]];
+    
     
 }
 
