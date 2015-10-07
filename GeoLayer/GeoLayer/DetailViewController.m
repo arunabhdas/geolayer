@@ -30,9 +30,9 @@
     // NSURL *imageUrl = [NSURL URLWithString:[self.selectedPictureLarge stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     photoView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    // 2
+    // name
     UITextView *nameTextView = [[UITextView alloc] init];
-    nameTextView.text = self.selectedName;
+    nameTextView.text = self.selectedVenue.name;
     nameTextView.backgroundColor = [UIColor whiteColor];
     nameTextView.textColor = [UIColor blackColor];
     nameTextView.font = [UIFont systemFontOfSize:20.0f];
@@ -44,8 +44,21 @@
     [nameTextView.widthAnchor constraintEqualToConstant:360].active = true;
     nameTextView.translatesAutoresizingMaskIntoConstraints = NO;
     
+   
+    // phone
+    UILabel *phoneLabel = [[UILabel alloc] init];
+    phoneLabel.text = self.selectedVenue.contact.phone;
+    phoneLabel.backgroundColor = [UIColor whiteColor];
+    phoneLabel.textColor = [UIColor blackColor];
+    phoneLabel.font = [UIFont systemFontOfSize:20.0f];
+    phoneLabel.textAlignment = NSTextAlignmentCenter;
+    phoneLabel.tag = 3;
+    [phoneLabel.heightAnchor constraintEqualToConstant:100].active = true;
+    [phoneLabel.widthAnchor constraintEqualToConstant:360].active = true;
+    phoneLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
-    // 3
+    
+    // address
     UITextView *descriptionTextView = [[UITextView alloc] init];
     descriptionTextView.text = self.selectedVenue.location.address;
     descriptionTextView.backgroundColor = [UIColor whiteColor];
@@ -53,11 +66,12 @@
     descriptionTextView.font = [UIFont systemFontOfSize:20.0f];
     descriptionTextView.returnKeyType = UIReturnKeyDone;
     descriptionTextView.textAlignment = NSTextAlignmentCenter;
-    descriptionTextView.tag = 3;
+    descriptionTextView.tag = 4;
     descriptionTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [descriptionTextView.heightAnchor constraintEqualToConstant:100].active = true;
     [descriptionTextView.widthAnchor constraintEqualToConstant:360].active = true;
     descriptionTextView.translatesAutoresizingMaskIntoConstraints = NO;
+    
     
     UIStackView *stackView = [[UIStackView alloc] init];
     stackView.axis = UILayoutConstraintAxisVertical;
@@ -69,6 +83,7 @@
     
     [stackView addArrangedSubview:photoView];
     [stackView addArrangedSubview:nameTextView];
+    [stackView addArrangedSubview:phoneLabel];
     [stackView addArrangedSubview:descriptionTextView];
     
     stackView.translatesAutoresizingMaskIntoConstraints = false;
@@ -81,10 +96,41 @@
     [stackView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = true;
     // [stackView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = true;
    
-    // 50 pixels from the top of its superview and 40 pixels tall
-   
-    // align stackView from the top using https://autolayoutconstraints.com/
+    NSLayoutConstraint *constraint = [NSLayoutConstraint
+                                      constraintWithItem: stackView
+                                      attribute: NSLayoutAttributeTop
+                                      relatedBy: NSLayoutRelationEqual
+                                      toItem: self.view
+                                      attribute: NSLayoutAttributeTop
+                                      multiplier:1.0
+                                      constant:80.0];
     
+    [self.view addConstraint:constraint];
+    
+    constraint = [NSLayoutConstraint
+                                      constraintWithItem:phoneLabel
+                                      attribute: NSLayoutAttributeTop
+                                      relatedBy: NSLayoutRelationEqual
+                                      toItem: nameTextView
+                                      attribute: NSLayoutAttributeTop
+                                      multiplier:1.0
+                                      constant:50.0];
+
+    [self.view addConstraint:constraint];
+  
+    constraint = [NSLayoutConstraint
+                  constraintWithItem: descriptionTextView
+                  attribute: NSLayoutAttributeTop
+                  relatedBy: NSLayoutRelationEqual
+                  toItem: phoneLabel
+                  attribute: NSLayoutAttributeTop
+                  multiplier:1.0
+                  constant:50.0];
+    
+    [self.view addConstraint:constraint];
+    
+    // align stackView from the top using https://autolayoutconstraints.com/
+    /*
     NSDictionary *elementsDict = NSDictionaryOfVariableBindings(photoView, nameTextView, descriptionTextView, stackView);
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[stackView]" options:0 metrics:nil views:elementsDict]];
@@ -92,6 +138,7 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[nameTextView]" options:0 metrics:nil views:elementsDict]];
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-150-[descriptionTextView]" options:0 metrics:nil views:elementsDict]];
+    */
     
     
 }
