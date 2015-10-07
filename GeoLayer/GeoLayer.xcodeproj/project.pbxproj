@@ -22,6 +22,7 @@
 		DCCC7E1E1BC3B7BF000BD540 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCC7E1D1BC3B7BF000BD540 /* CoreLocation.framework */; };
 		DCCC7E201BC3B95B000BD540 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCC7E1F1BC3B95B000BD540 /* MapKit.framework */; };
 		DCCC7E241BC48678000BD540 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E231BC48678000BD540 /* Location.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7E271BC49F55000BD540 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E261BC49F55000BD540 /* Contact.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		DCCC7E1F1BC3B95B000BD540 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DCCC7E221BC48678000BD540 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		DCCC7E231BC48678000BD540 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		DCCC7E251BC49F55000BD540 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		DCCC7E261BC49F55000BD540 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		FAE5145DD229B80054DF450F /* libPods-GeoLayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoLayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -159,6 +162,8 @@
 				DCCC7E101BC38C2D000BD540 /* Venue.m */,
 				DCCC7E221BC48678000BD540 /* Location.h */,
 				DCCC7E231BC48678000BD540 /* Location.m */,
+				DCCC7E251BC49F55000BD540 /* Contact.h */,
+				DCCC7E261BC49F55000BD540 /* Contact.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -270,6 +275,7 @@
 			files = (
 				DCCC7DF41BC3865D000BD540 /* ViewController.m in Sources */,
 				DCCC7DFA1BC3865D000BD540 /* GeoLayer.xcdatamodeld in Sources */,
+				DCCC7E271BC49F55000BD540 /* Contact.m in Sources */,
 				DCCC7E111BC38C2D000BD540 /* Venue.m in Sources */,
 				DCCC7E1C1BC39A52000BD540 /* DetailViewController.m in Sources */,
 				DCCC7E241BC48678000BD540 /* Location.m in Sources */,

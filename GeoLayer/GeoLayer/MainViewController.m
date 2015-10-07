@@ -11,6 +11,7 @@
 #import <RestKit/RestKit.h>
 #import "Venue.h"
 #import "Location.h"
+#import "Contact.h"
 #import "ItemCell.h"
 #import <CoreLocation/CoreLocation.h>
 #import "DetailViewController.h"
@@ -93,8 +94,11 @@
     // define relationship mapping
     [venueMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"location" toKeyPath:@"location" withMapping:locationMapping]];
     
+   // contact mapping
+    RKObjectMapping *contactMapping = [RKObjectMapping mappingForClass:[Contact class]];
+    [contactMapping addAttributeMappingsFromArray:@[@"phone", @"formattedPhone", @"twitter"]];
     
-    
+    [venueMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"contact" toKeyPath:@"contact" withMapping:contactMapping]];
     
 }
 
@@ -170,7 +174,8 @@
     
     Venue *venue = self.venues[indexPath.row];
     cell.mainLabel.text = venue.name;
-    cell.secondaryLabel.text = [NSString stringWithFormat:@"%.0fm", venue.location.distance.floatValue];
+    // cell.secondaryLabel.text = [NSString stringWithFormat:@"%.0fm", venue.location.distance.floatValue];
+    cell.secondaryLabel.text = venue.contact.phone;
     cell.photoView = (UIImageView *)[cell.contentView viewWithTag:PHOTO_TAG];
     
     return cell;

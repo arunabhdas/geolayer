@@ -19,27 +19,41 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    //View 1
-    UIImageView *contactImageView = [[UIImageView alloc] init];
-    contactImageView.image = [UIImage imageNamed:@"martini"];
-    [contactImageView.heightAnchor constraintEqualToConstant:200].active = true;
-    [contactImageView.widthAnchor constraintEqualToConstant:180].active = true;
+    // 1
+    UIImageView *photoView = [[UIImageView alloc] init];
+    photoView.image = [UIImage imageNamed:@"martini"];
+    [photoView.heightAnchor constraintEqualToConstant:200].active = true;
+    [photoView.widthAnchor constraintEqualToConstant:180].active = true;
     UIImage *defaultImage = [UIImage imageNamed:@"martini"];
     NSURL *imageUrl = [NSURL URLWithString:[self.selectedPictureLarge stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
-    UITextView *firstNameTextView = [[UITextView alloc] init];
-    firstNameTextView.text = self.selectedName;
-    firstNameTextView.backgroundColor = [UIColor whiteColor];
-    firstNameTextView.textColor = [UIColor blackColor];
-    firstNameTextView.font = [UIFont systemFontOfSize:20.0f];
-    firstNameTextView.returnKeyType = UIReturnKeyDone;
-    firstNameTextView.textAlignment = NSTextAlignmentCenter;
-    firstNameTextView.tag = 2;
-    firstNameTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    [firstNameTextView.heightAnchor constraintEqualToConstant:100].active = true;
-    [firstNameTextView.widthAnchor constraintEqualToConstant:360].active = true;
     
-
+    // 2
+    UITextView *nameTextView = [[UITextView alloc] init];
+    nameTextView.text = self.selectedName;
+    nameTextView.backgroundColor = [UIColor whiteColor];
+    nameTextView.textColor = [UIColor blackColor];
+    nameTextView.font = [UIFont systemFontOfSize:20.0f];
+    nameTextView.returnKeyType = UIReturnKeyDone;
+    nameTextView.textAlignment = NSTextAlignmentCenter;
+    nameTextView.tag = 2;
+    nameTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [nameTextView.heightAnchor constraintEqualToConstant:100].active = true;
+    [nameTextView.widthAnchor constraintEqualToConstant:360].active = true;
+    
+    // 3
+    UITextView *TextView = [[UITextView alloc] init];
+    nameTextView.text = self.selectedName;
+    nameTextView.backgroundColor = [UIColor whiteColor];
+    nameTextView.textColor = [UIColor blackColor];
+    nameTextView.font = [UIFont systemFontOfSize:20.0f];
+    nameTextView.returnKeyType = UIReturnKeyDone;
+    nameTextView.textAlignment = NSTextAlignmentCenter;
+    nameTextView.tag = 2;
+    nameTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [nameTextView.heightAnchor constraintEqualToConstant:100].active = true;
+    [nameTextView.widthAnchor constraintEqualToConstant:360].active = true;
+    
     UIStackView *stackView = [[UIStackView alloc] init];
     stackView.axis = UILayoutConstraintAxisVertical;
     stackView.distribution = UIStackViewDistributionEqualSpacing;
@@ -47,8 +61,8 @@
     stackView.spacing = 30;
     
     
-    [stackView addArrangedSubview:contactImageView];
-    [stackView addArrangedSubview:firstNameTextView];
+    [stackView addArrangedSubview:photoView];
+    [stackView addArrangedSubview:nameTextView];
     
     stackView.translatesAutoresizingMaskIntoConstraints = false;
     [self.view addSubview:stackView];
