@@ -3,12 +3,13 @@
 //  ContactList
 //
 
+
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
 
 @end
-
+static NSString *const kNotAvailable = @"Not Available";
 @implementation DetailViewController
 
 - (void)viewDidLoad {
@@ -41,12 +42,18 @@
     nameTextView.tag = 2;
     nameTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [nameTextView.heightAnchor constraintEqualToConstant:100].active = true;
-    [nameTextView.widthAnchor constraintEqualToConstant:360].active = true;
+    [nameTextView.widthAnchor constraintGreaterThanOrEqualToConstant:360].active = true;
     nameTextView.translatesAutoresizingMaskIntoConstraints = NO;
     
    
     // phone
     UILabel *phoneLabel = [[UILabel alloc] init];
+    phoneLabel.text = @"Phone : ";
+    if (self.selectedVenue.contact.phone.length) {
+        phoneLabel.text = [phoneLabel.text stringByAppendingString:self.selectedVenue.contact.phone];
+    } else {
+        phoneLabel.text = [phoneLabel.text stringByAppendingString:kNotAvailable];
+    }
     phoneLabel.text = self.selectedVenue.contact.phone;
     phoneLabel.backgroundColor = [UIColor whiteColor];
     phoneLabel.textColor = [UIColor blackColor];
@@ -54,13 +61,18 @@
     phoneLabel.textAlignment = NSTextAlignmentCenter;
     phoneLabel.tag = 3;
     [phoneLabel.heightAnchor constraintEqualToConstant:100].active = true;
-    [phoneLabel.widthAnchor constraintEqualToConstant:360].active = true;
+    [phoneLabel.widthAnchor constraintGreaterThanOrEqualToConstant:360].active = true;
     phoneLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
     
     // address
     UITextView *descriptionTextView = [[UITextView alloc] init];
-    descriptionTextView.text = self.selectedVenue.location.address;
+    descriptionTextView.text = @"Address : ";
+    if (self.selectedVenue.location.address.length) {
+        descriptionTextView.text = [descriptionTextView.text stringByAppendingString:self.selectedVenue.location.address];
+    } else {
+        descriptionTextView.text = [descriptionTextView.text stringByAppendingString:kNotAvailable];
+    }
     descriptionTextView.backgroundColor = [UIColor whiteColor];
     descriptionTextView.textColor = [UIColor blackColor];
     descriptionTextView.font = [UIFont systemFontOfSize:20.0f];
@@ -69,7 +81,7 @@
     descriptionTextView.tag = 4;
     descriptionTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [descriptionTextView.heightAnchor constraintEqualToConstant:100].active = true;
-    [descriptionTextView.widthAnchor constraintEqualToConstant:360].active = true;
+    [descriptionTextView.widthAnchor constraintGreaterThanOrEqualToConstant:360].active = true;
     descriptionTextView.translatesAutoresizingMaskIntoConstraints = NO;
     
     
