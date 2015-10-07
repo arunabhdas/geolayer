@@ -54,7 +54,6 @@ static NSString *const kNotAvailable = @"Not Available";
     } else {
         phoneLabel.text = [phoneLabel.text stringByAppendingString:kNotAvailable];
     }
-    phoneLabel.text = self.selectedVenue.contact.phone;
     phoneLabel.backgroundColor = [UIColor whiteColor];
     phoneLabel.textColor = [UIColor blackColor];
     phoneLabel.font = [UIFont systemFontOfSize:20.0f];
@@ -122,24 +121,14 @@ static NSString *const kNotAvailable = @"Not Available";
     constraint = [NSLayoutConstraint
                                       constraintWithItem:phoneLabel
                                       attribute: NSLayoutAttributeTop
-                                      relatedBy: NSLayoutRelationEqual
+                                      relatedBy: NSLayoutRelationLessThanOrEqual
                                       toItem: nameTextView
                                       attribute: NSLayoutAttributeTop
                                       multiplier:1.0
                                       constant:50.0];
 
     [self.view addConstraint:constraint];
-  
-    constraint = [NSLayoutConstraint
-                  constraintWithItem: descriptionTextView
-                  attribute: NSLayoutAttributeTop
-                  relatedBy: NSLayoutRelationEqual
-                  toItem: phoneLabel
-                  attribute: NSLayoutAttributeTop
-                  multiplier:1.0
-                  constant:50.0];
     
-    [self.view addConstraint:constraint];
     
     // align stackView from the top using https://autolayoutconstraints.com/
     /*
