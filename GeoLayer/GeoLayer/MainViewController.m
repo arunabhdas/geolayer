@@ -208,10 +208,8 @@
     {
         NSIndexPath *indexPath = (NSIndexPath *)sender;
         DetailViewController *destViewController = segue.destinationViewController;
-        destViewController.selectedIndex = self.selectedIndex;
         Venue *selectedVenue = [[Venue alloc] init];
         selectedVenue = self.venues[self.selectedIndex];
-        destViewController.selectedName = selectedVenue.name;
         destViewController.selectedVenue = selectedVenue;
         // destViewController.selectedPictureLarge = self.selectedPictureLarge;
     }
