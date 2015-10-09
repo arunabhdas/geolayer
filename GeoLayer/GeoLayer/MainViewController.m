@@ -5,15 +5,16 @@
 #define kClientId @"4HJKQ3GGLO5MJ4X14OGMKSPGVXFF34BUZ4TE0BKM032DFFKA"
 #define kClientSecret @"KZ0JJL0REUQUCTT3V4RZMC5VFFHRTQVHCNEXRJOW30JPDLUN"
 #define SAMPLE_URL @"https://api.foursquare.com/v2/venues/search?client_id=4HJKQ3GGLO5MJ4X14OGMKSPGVXFF34BUZ4TE0BKM032DFFKA&client_secret=KZ0JJL0REUQUCTT3V4RZMC5VFFHRTQVHCNEXRJOW30JPDLUN&v=20130815%20&ll=40.7,-74%20&query=sushi"
+#define kAPIBaseUrl @"https://api.foursquare.com"
 #define kAppTitle @"Geo Layer"
 #define kMainToDetailSegue @"MainToDetailSegue"
 #import "MainViewController.h"
-#import <RestKit/RestKit.h>
 #import "Venue.h"
 #import "Location.h"
 #import "Contact.h"
 #import "ItemCell.h"
 #import <CoreLocation/CoreLocation.h>
+#import <RestKit/RestKit.h>
 #import "DetailViewController.h"
 #define MAINLABEL_TAG 1
 #define SECONDLABEL_TAG 2
@@ -128,6 +129,26 @@
         }];
     }
 }
+/*
+ - (void) loadVenues:(NSString *)keyword {
+    APIClient *apiClient = [[APIClient alloc] initWithBaseURL:[NSURL URLWithString:kAPIBaseUrl]];
+    NSString *clientId = kClientId;
+    NSString *clientSecret = kClientSecret;
+    NSString *versionString = @"20151006";
+    NSDictionary *queryParams = @{@"ll": self.latlon,
+                                  @"client_id": clientId,
+                                  @"client_secret": clientSecret,
+                                  @"v": versionString,
+                                  @"query": keyword
+                                  };
+    
+    
+    [apiClient GET:@"/v2/venues/search" parameters:queryParams completion:^(OVCResponse * _Nullable response, NSError * _Nullable error) {
+        self.venues = response;
+    }];
+    
+}
+*/
 - (void) didReceiveMemoryWarning
 {
     
@@ -204,7 +225,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"MainToDetailSegue"])
+    if ([segue.identifier isEqualToString:kMainToDetailSegue])
     {
         NSIndexPath *indexPath = (NSIndexPath *)sender;
         DetailViewController *destViewController = segue.destinationViewController;
@@ -232,7 +253,6 @@
 {
     [searchBar resignFirstResponder];
     [self.view endEditing:YES];
-    // [self loadVenues:self.searchBar.text];
     [self loadVenues:self.searchController.searchBar.text];
 }
 #pragma mark - UISearchResultsUpdatingDelegate

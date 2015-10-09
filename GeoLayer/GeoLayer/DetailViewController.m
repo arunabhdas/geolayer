@@ -6,10 +6,11 @@
 #define kClientId @"4HJKQ3GGLO5MJ4X14OGMKSPGVXFF34BUZ4TE0BKM032DFFKA"
 #define kClientSecret @"KZ0JJL0REUQUCTT3V4RZMC5VFFHRTQVHCNEXRJOW30JPDLUN"
 #define kSampleUrl @"https://api.foursquare.com/v2/venues/45ac12d6f964a5205d411fe3/photos?client_id=4HJKQ3GGLO5MJ4X14OGMKSPGVXFF34BUZ4TE0BKM032DFFKA&client_secret=KZ0JJL0REUQUCTT3V4RZMC5VFFHRTQVHCNEXRJOW30JPDLUN&v=20130815"
-
+#define kDetailToPhotosSegue @"DetailToPhotosSegue"
 #import "DetailViewController.h"
-#import <RestKit/RestKit.h>
 #import "Item.h"
+#import "PhotosViewController.h"
+#import <RestKit/RestKit.h>
 @interface DetailViewController ()
 
 @end
@@ -22,9 +23,8 @@ static NSString *const kNotAvailable = @"Not Available";
     // Do any additional setup after loading the view.
     NSLog(@"DetailViewController %@", self.selectedVenue.name);
     [self configureRestKit];
-    // [self loadItems];
+    [self loadItems];
 }
-
 
 
 - (void)configureRestKit {
@@ -32,6 +32,9 @@ static NSString *const kNotAvailable = @"Not Available";
     
     NSURL *baseURL = [NSURL URLWithString:@"https://api.foursquare.com"];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    // NSString *keyPath = @"/v2/venues/45ac12d6f964a5205d411fe3/photos";
+    NSString *pathPattern = [@"/v2/venues/" stringByAppendingString:self.selectedVenue.id];
+    pathPattern = [pathPattern stringByAppendingString:@"/photos"];
     // initialize RestKit
     RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
     
@@ -47,13 +50,6 @@ static NSString *const kNotAvailable = @"Not Available";
                                                 keyPath:@"response.photos.items"
                                                 statusCodes:[NSIndexSet indexSetWithIndex:200]];
 
-    /*
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor
-                                                responseDescriptorWithMapping:itemMapping
-                                                method:RKRequestMethodGET pathPattern:nil
-                                                keyPath:@"response.photos.items"
-                                                statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    */
     [objectManager addResponseDescriptor:responseDescriptor];
     
 }
@@ -64,6 +60,10 @@ static NSString *const kNotAvailable = @"Not Available";
     // NSString *path = @"/v2/venues/45ac12d6f964a5205d411fe3/photos";
     NSString *path = [@"/v2/venues/" stringByAppendingString:self.selectedVenue.id];
     path = [path stringByAppendingString:@"/photos"];
+    
+    // NSString *path = @"/v2/venues/45ac12d6f964a5205d411fe3/photos";
+    
+    
     NSDictionary *queryParams = @{@"client_id": clientId,
                                   @"client_secret": clientSecret,
                                   @"v": versionString,
@@ -80,6 +80,8 @@ static NSString *const kNotAvailable = @"Not Available";
                                                       NSLog(@"what do you mean by there's no coffee");
                                                       
                                                   }];
+    
+    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -90,6 +92,7 @@ static NSString *const kNotAvailable = @"Not Available";
     self.phoneTextView = [[UITextView alloc] init];
     self.twitterTextView = [[UITextView alloc] init];
     self.descriptionTextView = [[UITextView alloc] init];
+    self.photosButton = [[UIButton alloc] init];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -172,17 +175,27 @@ static NSString *const kNotAvailable = @"Not Available";
     self.descriptionTextView.editable = NO;
     self.descriptionTextView.tag = 5;
     self.descriptionTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    [self.descriptionTextView.heightAnchor constraintEqualToConstant:100].active = true;
+    [self.descriptionTextView.heightAnchor constraintEqualToConstant:50].active = true;
     [self.descriptionTextView.widthAnchor constraintGreaterThanOrEqualToConstant:360].active = true;
     self.descriptionTextView.translatesAutoresizingMaskIntoConstraints = NO;
     
+    
+    // button
+    [self.photosButton setTitle:@"Photos" forState:UIControlStateNormal];
+    [self.photosButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.photosButton.heightAnchor constraintEqualToConstant:50].active = true;
+    [self.photosButton.widthAnchor constraintGreaterThanOrEqualToConstant:360].active = true;
+    [self.photosButton setFont:[UIFont systemFontOfSize:20.0f]];
+    [self.photosButton addTarget:self action:@selector(photosButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    self.photosButton.tag = 6;
+    self.photosButton.translatesAutoresizingMaskIntoConstraints = NO;
     
     self.stackView = [[UIStackView alloc] init];
     self.stackView.axis = UILayoutConstraintAxisVertical;
     self.stackView.distribution = UIStackViewDistributionEqualSpacing;
     self.stackView.alignment = UIStackViewAlignmentCenter;
     self.stackView.spacing = 10;
-    self.stackView.tag = 6;
+    self.stackView.tag = 7;
     self.stackView.translatesAutoresizingMaskIntoConstraints = NO;
     
     
@@ -191,6 +204,8 @@ static NSString *const kNotAvailable = @"Not Available";
     [self.stackView addArrangedSubview:self.phoneTextView];
     [self.stackView addArrangedSubview:self.twitterTextView];
     [self.stackView addArrangedSubview:self.descriptionTextView];
+    [self.stackView addArrangedSubview:self.photosButton];
+    
     [self.scrollView addSubview:self.self.stackView];
     [self.view addSubview:self.scrollView];
     
@@ -235,6 +250,28 @@ static NSString *const kNotAvailable = @"Not Available";
      */
 }
 
+
+- (void)photosButtonTapped {
+    NSLog(@"photosButtonTapped");
+    [self performSegueWithIdentifier:kDetailToPhotosSegue sender:self];
+}
+- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([self shouldPerformSegueWithIdentifier:identifier sender:sender]) {
+        [super performSegueWithIdentifier:identifier sender:sender];
+    }
+    // otherwise do nothing
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kDetailToPhotosSegue])
+    {
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        PhotosViewController *destViewController = segue.destinationViewController;
+        destViewController.selectedVenue = self.selectedVenue;
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

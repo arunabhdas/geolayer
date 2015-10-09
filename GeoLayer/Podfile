@@ -3,7 +3,15 @@
 
 target 'GeoLayer' do
 pod 'RestKit', '~> 0.24.0'
+pod 'RestKit/Network', '~> 0.23'
+pod 'RestKit/ObjectMapping', '~> 0.23'
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'SDWebImage', '~>3.7'
+pod 'JSONModel'
+pod 'MBProgressHUD', '~> 0.9.1'
+# pod 'MMRecord', '~> 1.4.1'
+# pod 'Mantle', '~> 2.0.5'
+# pod 'AFNetworking', '~> 2.6.0'
+# pod 'Overcoat', '~> 3.1.1'
 end
 

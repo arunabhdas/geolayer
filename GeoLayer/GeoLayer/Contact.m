@@ -7,5 +7,4 @@
 
 @implementation Contact
 
-
 @end

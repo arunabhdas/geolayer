@@ -232,6 +232,8 @@ static NSMutableDictionary *RKRegisteredResponseMapperOperationDataSourceClasses
 - (NSDictionary *)buildResponseMappingsDictionary
 {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    NSLog(@"---------%@", self.matchingResponseDescriptors);
+    NSLog(@"------------------------------------------------");
     for (RKResponseDescriptor *responseDescriptor in self.matchingResponseDescriptors) {
         dictionary[(responseDescriptor.keyPath ?: [NSNull null])] = responseDescriptor.mapping;
     }

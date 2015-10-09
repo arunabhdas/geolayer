@@ -19,5 +19,4 @@
 @property (nonatomic, strong) NSString *country;
 @property (nonatomic, strong) NSString *formattedAddress;
 
-
 @end
