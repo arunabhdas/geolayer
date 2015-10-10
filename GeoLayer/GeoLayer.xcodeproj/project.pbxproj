@@ -30,6 +30,14 @@
 		DCCC7E651BC7ABF4000BD540 /* ResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E641BC7ABF4000BD540 /* ResponseModel.m */; settings = {ASSET_TAGS = (); }; };
 		DCCC7E681BC7ADCE000BD540 /* MetaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E671BC7ADCE000BD540 /* MetaModel.m */; settings = {ASSET_TAGS = (); }; };
 		DCCC7E6B1BC7AE78000BD540 /* ResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E6A1BC7AE78000BD540 /* ResultModel.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7E771BC826A4000BD540 /* RandomUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E761BC826A4000BD540 /* RandomUser.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7E7A1BC826D1000BD540 /* Name.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E791BC826D1000BD540 /* Name.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7E7D1BC827B0000BD540 /* RandomUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E7C1BC827B0000BD540 /* RandomUserLocation.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7E801BC8294D000BD540 /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7E7F1BC8294D000BD540 /* Picture.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7EA91BC87F30000BD540 /* Source.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7EA81BC87F30000BD540 /* Source.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7EAC1BC8998A000BD540 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7EAB1BC8998A000BD540 /* User.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7EAF1BC89A4A000BD540 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7EAE1BC89A4A000BD540 /* Photo.m */; settings = {ASSET_TAGS = (); }; };
+		DCCC7EB21BC89ACE000BD540 /* Checkin.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCC7EB11BC89ACE000BD540 /* Checkin.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +82,22 @@
 		DCCC7E671BC7ADCE000BD540 /* MetaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetaModel.m; sourceTree = "<group>"; };
 		DCCC7E691BC7AE78000BD540 /* ResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultModel.h; sourceTree = "<group>"; };
 		DCCC7E6A1BC7AE78000BD540 /* ResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultModel.m; sourceTree = "<group>"; };
+		DCCC7E751BC826A4000BD540 /* RandomUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomUser.h; sourceTree = "<group>"; };
+		DCCC7E761BC826A4000BD540 /* RandomUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomUser.m; sourceTree = "<group>"; };
+		DCCC7E781BC826D1000BD540 /* Name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Name.h; sourceTree = "<group>"; };
+		DCCC7E791BC826D1000BD540 /* Name.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Name.m; sourceTree = "<group>"; };
+		DCCC7E7B1BC827B0000BD540 /* RandomUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomUserLocation.h; sourceTree = "<group>"; };
+		DCCC7E7C1BC827B0000BD540 /* RandomUserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomUserLocation.m; sourceTree = "<group>"; };
+		DCCC7E7E1BC8294D000BD540 /* Picture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Picture.h; sourceTree = "<group>"; };
+		DCCC7E7F1BC8294D000BD540 /* Picture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Picture.m; sourceTree = "<group>"; };
+		DCCC7EA71BC87F30000BD540 /* Source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Source.h; sourceTree = "<group>"; };
+		DCCC7EA81BC87F30000BD540 /* Source.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Source.m; sourceTree = "<group>"; };
+		DCCC7EAA1BC8998A000BD540 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		DCCC7EAB1BC8998A000BD540 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		DCCC7EAD1BC89A4A000BD540 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		DCCC7EAE1BC89A4A000BD540 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		DCCC7EB01BC89ACE000BD540 /* Checkin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checkin.h; sourceTree = "<group>"; };
+		DCCC7EB11BC89ACE000BD540 /* Checkin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checkin.m; sourceTree = "<group>"; };
 		FAE5145DD229B80054DF450F /* libPods-GeoLayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoLayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -131,10 +155,9 @@
 		DCCC7DEB1BC3865D000BD540 /* GeoLayer */ = {
 			isa = PBXGroup;
 			children = (
+				DCCC7E731BC82645000BD540 /* Models */,
 				DCCC7E591BC76D81000BD540 /* APIClient */,
-				DCCC7E4C1BC744A5000BD540 /* MTLModels */,
 				DCCC7E2E1BC4A8C9000BD540 /* AppDelegate */,
-				DCCC7E211BC44F42000BD540 /* Models */,
 				DCCC7E191BC3968B000BD540 /* Views */,
 				DCCC7E151BC38F8F000BD540 /* Controllers */,
 				DCCC7DF51BC3865D000BD540 /* Main.storyboard */,
@@ -178,7 +201,7 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		DCCC7E211BC44F42000BD540 /* Models */ = {
+		DCCC7E211BC44F42000BD540 /* FlickrModels */ = {
 			isa = PBXGroup;
 			children = (
 				DCCC7DF81BC3865D000BD540 /* GeoLayer.xcdatamodeld */,
@@ -193,7 +216,7 @@
 				DCCC7E691BC7AE78000BD540 /* ResultModel.h */,
 				DCCC7E6A1BC7AE78000BD540 /* ResultModel.m */,
 			);
-			name = Models;
+			name = FlickrModels;
 			sourceTree = "<group>";
 		};
 		DCCC7E2E1BC4A8C9000BD540 /* AppDelegate */ = {
@@ -205,7 +228,7 @@
 			name = AppDelegate;
 			sourceTree = "<group>";
 		};
-		DCCC7E4C1BC744A5000BD540 /* MTLModels */ = {
+		DCCC7E4C1BC744A5000BD540 /* FourSquareModels */ = {
 			isa = PBXGroup;
 			children = (
 				DCCC7E4D1BC744CE000BD540 /* Venue.h */,
@@ -216,8 +239,16 @@
 				DCCC7E541BC748FF000BD540 /* Contact.m */,
 				DCCC7E561BC75833000BD540 /* Item.h */,
 				DCCC7E571BC75833000BD540 /* Item.m */,
+				DCCC7EA71BC87F30000BD540 /* Source.h */,
+				DCCC7EA81BC87F30000BD540 /* Source.m */,
+				DCCC7EAA1BC8998A000BD540 /* User.h */,
+				DCCC7EAB1BC8998A000BD540 /* User.m */,
+				DCCC7EAD1BC89A4A000BD540 /* Photo.h */,
+				DCCC7EAE1BC89A4A000BD540 /* Photo.m */,
+				DCCC7EB01BC89ACE000BD540 /* Checkin.h */,
+				DCCC7EB11BC89ACE000BD540 /* Checkin.m */,
 			);
-			name = MTLModels;
+			name = FourSquareModels;
 			sourceTree = "<group>";
 		};
 		DCCC7E591BC76D81000BD540 /* APIClient */ = {
@@ -225,6 +256,31 @@
 			children = (
 			);
 			name = APIClient;
+			sourceTree = "<group>";
+		};
+		DCCC7E731BC82645000BD540 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7E741BC8265F000BD540 /* RandomUserModels */,
+				DCCC7E4C1BC744A5000BD540 /* FourSquareModels */,
+				DCCC7E211BC44F42000BD540 /* FlickrModels */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		DCCC7E741BC8265F000BD540 /* RandomUserModels */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC7E751BC826A4000BD540 /* RandomUser.h */,
+				DCCC7E761BC826A4000BD540 /* RandomUser.m */,
+				DCCC7E781BC826D1000BD540 /* Name.h */,
+				DCCC7E791BC826D1000BD540 /* Name.m */,
+				DCCC7E7B1BC827B0000BD540 /* RandomUserLocation.h */,
+				DCCC7E7C1BC827B0000BD540 /* RandomUserLocation.m */,
+				DCCC7E7E1BC8294D000BD540 /* Picture.h */,
+				DCCC7E7F1BC8294D000BD540 /* Picture.m */,
+			);
+			name = RandomUserModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,18 +390,26 @@
 			files = (
 				DCCC7E5F1BC7A9C1000BD540 /* ItemModel.m in Sources */,
 				DCCC7E551BC748FF000BD540 /* Contact.m in Sources */,
+				DCCC7E771BC826A4000BD540 /* RandomUser.m in Sources */,
 				DCCC7E521BC7486E000BD540 /* Location.m in Sources */,
+				DCCC7EB21BC89ACE000BD540 /* Checkin.m in Sources */,
 				DCCC7DF41BC3865D000BD540 /* ViewController.m in Sources */,
 				DCCC7E621BC7AB13000BD540 /* PhotosModel.m in Sources */,
+				DCCC7EA91BC87F30000BD540 /* Source.m in Sources */,
 				DCCC7E651BC7ABF4000BD540 /* ResponseModel.m in Sources */,
 				DCCC7DFA1BC3865D000BD540 /* GeoLayer.xcdatamodeld in Sources */,
 				DCCC7E6B1BC7AE78000BD540 /* ResultModel.m in Sources */,
 				DCCC7E1C1BC39A52000BD540 /* DetailViewController.m in Sources */,
+				DCCC7E7A1BC826D1000BD540 /* Name.m in Sources */,
+				DCCC7EAF1BC89A4A000BD540 /* Photo.m in Sources */,
+				DCCC7EAC1BC8998A000BD540 /* User.m in Sources */,
 				DCCC7E181BC39681000BD540 /* ItemCell.m in Sources */,
 				DCCC7E4F1BC744CE000BD540 /* Venue.m in Sources */,
 				DCCC7E581BC75833000BD540 /* Item.m in Sources */,
 				DCCC7E141BC38F7D000BD540 /* MainViewController.m in Sources */,
+				DCCC7E801BC8294D000BD540 /* Picture.m in Sources */,
 				DCCC7DF11BC3865D000BD540 /* AppDelegate.m in Sources */,
+				DCCC7E7D1BC827B0000BD540 /* RandomUserLocation.m in Sources */,
 				DCCC7E4B1BC73749000BD540 /* PhotosViewController.m in Sources */,
 				DCCC7E681BC7ADCE000BD540 /* MetaModel.m in Sources */,
 				DCCC7DEE1BC3865D000BD540 /* main.m in Sources */,

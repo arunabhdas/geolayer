@@ -9,6 +9,9 @@
 #define kClientId @"4HJKQ3GGLO5MJ4X14OGMKSPGVXFF34BUZ4TE0BKM032DFFKA"
 #define kClientSecret @"KZ0JJL0REUQUCTT3V4RZMC5VFFHRTQVHCNEXRJOW30JPDLUN"
 #define kSampleUrl @"https://api.foursquare.com/v2/venues/45ac12d6f964a5205d411fe3/photos?client_id=4HJKQ3GGLO5MJ4X14OGMKSPGVXFF34BUZ4TE0BKM032DFFKA&client_secret=KZ0JJL0REUQUCTT3V4RZMC5VFFHRTQVHCNEXRJOW30JPDLUN&v=20130815"
+
+#define kSampleRandomUserUrl @"http://api.randomuser.me/?results=200&key=MQ8Y-96ZR-Q1AM-DWJB"
+
 #define kDetailToPhotosSegue @"DetailToPhotosSegue"
 #import "DetailViewController.h"
 #import "ItemModel.h"
@@ -17,8 +20,9 @@
 #import "MBProgressHUD.h"
 #import "ResultModel.h"
 #import "JSONModelLib.h"
+#import "RandomUser.h"
 @interface PhotosViewController() {
-    ResultModel *_result;
+    RKObjectManager *_objectManager;
 }
 
 @end
@@ -30,19 +34,61 @@ static NSString *const kNotAvailable = @"Not Available";
     NSLog(@"========================================");
     // Do any additional setup after loading the view.
     NSLog(@"PhotosViewController ");
-    [self loadAllItems];
+    NSLog(@"========================================");
+    [self configureRestKit];
+    [self loadItems];
 }
 
-- (void) loadAllItems {
-    // [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+- (void)configureRestKit {
+    // initialize AFNetworking HTTPClient
+    NSURL *baseURL = [NSURL URLWithString:@"http://api.randomuser.me"];
     
-    _result = [[ResultModel alloc] initFromURLWithString:kSampleUrl completion:^(id model, JSONModelError *err) {
-        self.items = _result.response.photos.items;
-        // [MBProgressHUD hideHUDForView:self.view animated:YES];
-        ItemModel *itemModel = self.items[2];
-        NSLog(@"itemModel :%@", itemModel);
-    }];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    // NSString *keyPath = @"/v2/venues/45ac12d6f964a5205d411fe3/photos";
+    // initialize RestKit
+    _objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    
+    // setup object mappings
+    RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[RandomUser class]];
+    
+    [userMapping addAttributeMappingsFromArray:@[@"gender", @"name", @"location", @"email", @"username", @"password", @"salt", @"md5", @"sha1", @"sha256", @"registered", @"dob", @"phone", @"cell", @"NINO", @"picture"]];
+    
+    // register mappings with the provider using a response descriptor
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor
+                                                responseDescriptorWithMapping:userMapping
+                                                method:RKRequestMethodGET pathPattern:nil
+                                                keyPath:@"results.user"
+                                                statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    
+    [_objectManager addResponseDescriptor:responseDescriptor];
+    
 }
+- (void)loadItems {
+    NSString *path = @"/?";
+    
+    // NSString *path = @"/v2/venues/45ac12d6f964a5205d411fe3/photos";
+    
+    
+    NSDictionary *queryParams = @{@"results": @"200",
+                                  @"key": @"MQ8Y-96ZR-Q1AM-DWJB"
+                                  };
+    
+    [_objectManager getObjectsAtPath:path parameters:queryParams
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  self.users = mappingResult.array;
+                                                  // NSLog(@"mapping Result %@", mappingResult);
+                                                  for (RandomUser *user in self.users) {
+                                                      NSLog(@"-------------------------first %@", user.name.first);
+                                                  }
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  NSLog(@"what do you mean by there's no coffee");
+                                                  
+                                              }];
+    
+    
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

@@ -2,10 +2,9 @@
 # platform :ios, '6.0'
 
 target 'GeoLayer' do
-pod 'RestKit', '~> 0.24.0'
-pod 'RestKit/Network', '~> 0.23'
-pod 'RestKit/ObjectMapping', '~> 0.23'
+pod 'RestKit'
 pod 'MBProgressHUD', '~> 0.9.1'
+pod 'SVProgressHUD', '0.9'
 pod 'SDWebImage', '~>3.7'
 pod 'JSONModel'
 pod 'MBProgressHUD', '~> 0.9.1'

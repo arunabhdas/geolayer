@@ -16,5 +16,4 @@
 @property (nonatomic) BOOL hasMenu;
 @property (nonatomic, strong) Location *location;
 @property (nonatomic, strong) Contact *contact;
-+ (NSDictionary *)JSONKeyPathByPropertyKey;
 @end

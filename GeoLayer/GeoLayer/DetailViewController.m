@@ -11,7 +11,10 @@
 #import "Item.h"
 #import "PhotosViewController.h"
 #import <RestKit/RestKit.h>
-@interface DetailViewController ()
+#import "UIImageView+WebCache.h"
+@interface DetailViewController () {
+    RKObjectManager *_objectManager;
+}
 
 @end
 static NSString *const kNotAvailable = @"Not Available";
@@ -19,9 +22,9 @@ static NSString *const kNotAvailable = @"Not Available";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"========================================");
     // Do any additional setup after loading the view.
     NSLog(@"DetailViewController %@", self.selectedVenue.name);
+    NSLog(@"========================================");
     [self configureRestKit];
     [self loadItems];
 }
@@ -29,28 +32,29 @@ static NSString *const kNotAvailable = @"Not Available";
 
 - (void)configureRestKit {
     // initialize AFNetworking HTTPClient
-    
+    // RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+    // RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     NSURL *baseURL = [NSURL URLWithString:@"https://api.foursquare.com"];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     // NSString *keyPath = @"/v2/venues/45ac12d6f964a5205d411fe3/photos";
     NSString *pathPattern = [@"/v2/venues/" stringByAppendingString:self.selectedVenue.id];
     pathPattern = [pathPattern stringByAppendingString:@"/photos"];
     // initialize RestKit
-    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    _objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
     
     // setup object mappings
     RKObjectMapping *itemMapping = [RKObjectMapping mappingForClass:[Item class]];
     
-    [itemMapping addAttributeMappingsFromArray:@[@"createdAt", @"height", @"id", @"prefix", @"suffix", @"visibility", @"width"]];
+    [itemMapping addAttributeMappingsFromArray:@[@"id", @"createdAt", @"source", @"prefix", @"suffix",  @"width", @"height", @"user", @"checkin", @"visibility"]];
     
     // register mappings with the provider using a response descriptor
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor
                                                 responseDescriptorWithMapping:itemMapping
-                                                method:RKRequestMethodGET pathPattern:@"/v2/venues/:id/photos"
+                                                method:RKRequestMethodGET pathPattern:nil
                                                 keyPath:@"response.photos.items"
                                                 statusCodes:[NSIndexSet indexSetWithIndex:200]];
 
-    [objectManager addResponseDescriptor:responseDescriptor];
+    [_objectManager addResponseDescriptor:responseDescriptor];
     
 }
 - (void)loadItems {
@@ -69,19 +73,33 @@ static NSString *const kNotAvailable = @"Not Available";
                                   @"v": versionString,
                                  };
         
-        [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:queryParams
+        [_objectManager getObjectsAtPath:path parameters:queryParams
                                                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                       self.items = mappingResult.array;
-                                                      NSLog(@"------------------------mapping Result %@", mappingResult);
+                                                      // NSLog(@"mapping Result %@", mappingResult);
+                                                      /*
                                                       for (Item *item in self.items) {
-                                                          NSLog(@"prefix %@", item.prefix);
-                                                      }
+                                                          NSLog(@"prefix %@", item.checkin.id);
+                                                      }*/
+                                                      [self postInit];
                                                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                       NSLog(@"what do you mean by there's no coffee");
                                                       
                                                   }];
     
     
+}
+- (void) postInit {
+    UIImage *defaultImage = [UIImage imageNamed:@"martini"];
+    if (![self.items count]) {
+        [self.photoView setImage:defaultImage];
+    } else {
+        Item *item = [self.items objectAtIndex:0];
+        NSString *itemTopImageURL = [[item.prefix stringByAppendingString:@"100x100"] stringByAppendingString:item.suffix];
+        NSURL *imageUrl = [NSURL URLWithString:[itemTopImageURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
+        [self.photoView sd_setImageWithURL:imageUrl placeholderImage:defaultImage];
+    }
+
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -104,7 +122,7 @@ static NSString *const kNotAvailable = @"Not Available";
 - (void)layoutAllViews {
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     // 1
-    self.photoView.image = [UIImage imageNamed:@"martini"];
+    // self.photoView.image = [UIImage imageNamed:@"martini"];
     [self.photoView.heightAnchor constraintEqualToConstant:100].active = true;
     [self.photoView.widthAnchor constraintEqualToConstant:100].active = true;
     self.photoView.tag = 1;

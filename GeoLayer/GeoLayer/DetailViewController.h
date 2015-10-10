@@ -8,7 +8,7 @@
 #import "Item.h"
 @interface DetailViewController : UIViewController
 
-@property (nonatomic, assign) Venue *selectedVenue;
+@property (nonatomic, strong) Venue *selectedVenue;
 @property (nonatomic, strong) NSArray<Item *> *items;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIStackView *stackView;
